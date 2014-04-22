@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="white" type="color" >#FFF</item>
+    <item name="donethat_ci_primary" type="color" >#690</item>
+    <item name="donethat_ci_secondary" type="color" >#9C0</item>
+
+</resources>

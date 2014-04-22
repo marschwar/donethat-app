@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/action_edit"
+            android:orderInCategory="90"
+            android:showAsAction="ifRoom|withText"
+            android:icon="@drawable/ic_content_edit"
+            android:title="Notiz bearbeiten"/>
+    <item
+            android:id="@+id/action_add_image"
+            android:orderInCategory="100"
+            android:showAsAction="ifRoom|withText"
+            android:icon="@drawable/ic_content_new_picture"
+            android:title="Bild hinzufügen"/>
+    <item
+            android:id="@+id/action_update_location"
+            android:orderInCategory="110"
+            android:showAsAction="ifRoom|withText"
+            android:icon="@drawable/ic_action_locate"
+            android:title="Ort aktualisieren"/>
+    <item
+            android:id="@+id/action_delete"
+            android:orderInCategory="120"
+            android:showAsAction="never"
+            android:icon="@drawable/ic_action_delete"
+            android:title="Notiz löschen"/>
+    <item
+            android:id="@+id/action_logout"
+            android:orderInCategory="900"
+            android:showAsAction="never"
+            android:title="Abmelden"/>
+
+</menu>

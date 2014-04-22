@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DoneThat</string>
+    <string name="action_save">Speichern</string>
+    <string name="title_activity_trip_notes">Alle meine Reisen</string>
+    <string name="title_activity_note_detail">Eine neue Notiz</string>
+    <string name="title_activity_edit_trip">Eine neue Reise</string>
+    <string name="title_activity_all_trips">Meine Reisen</string>
+    <string name="title_activity_edit_note">Notiz bearbeiten</string>
+    <string name="title_activity_twitter_auth">Mit Twitter anmelden</string>
+    <string name="hero_login_title">Mit Twitter anmelden</string>
+    <string name="hero_login_description">Du kannst die Applikation auch vollständig anonym verwenden, aber um deine deine Reisen zu synchronisieren, musst du dich einmal mit deinem Twitter Account anmelden.</string>
+    <string name="hero_login_description_logged_in">Hallo %s, schön dass du dich schon angemeldet hast. Wenn du dich auf www.donethat.de auch schon angemeldet hast, kannst du deine Reisen jederzeit synchronisieren.</string>
+    <string name="hero_trips_title_no_trips">Neue Reise</string>
+    <string name="hero_trips_title">Meine Reisen</string>
+    <string name="hero_trips_description">Schön dass du schon eine Reise angelegt hast. Nun ist es an der Zeit, ein paar Stationen einzutragen.</string>
+    <string name="hero_trips_description_no_trips">Jede Reise beginnt mit dem ersten Schritt. Leg am besten gleich mal eine neue Reise an.</string>
+
+    <string name="pref_syncServerTitle">Sync Server</string>
+    <string name="pref_syncServerSummary">Die vollständige URL zum Sync-Service</string>
+    <string name="pref_syncGroupTitle">Sync</string>
+    <string name="pref_miscGroupTitle">Misc</string>
+
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Abbrechen</string>
+
+</resources>

@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    style="@style/EditView"
+    tools:context=".EditTripActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/trip_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name des Trips" >
+
+        <requestFocus />
+    </EditText>
+
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nach dem Sync für alle sichtbar"
+            android:id="@+id/chk_public"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Beschreibung"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/trip_description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="Beschreibung der Reise"
+        android:inputType="textMultiLine"
+        android:minLines="5"
+        android:maxLines="20"
+        android:gravity="top"/>
+
+</LinearLayout>

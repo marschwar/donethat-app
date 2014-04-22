@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="column_count" type="integer">1</item>
+    <item name="menu_bar_height" type="integer">150</item>
+
+    <dimen name="hero_max_width">400dip</dimen>
+
+</resources>

@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/action_sync"
+            android:orderInCategory="90"
+            android:showAsAction="ifRoom|withText"
+            android:icon="@drawable/ic_action_refresh"
+            android:title="Sync"/>
+    <item
+            android:id="@+id/action_sync_force"
+            android:orderInCategory="90"
+            android:showAsAction="never"
+            android:icon="@drawable/ic_action_refresh"
+            android:title="Force Sync"/>
+    <item
+            android:id="@+id/action_login"
+            android:orderInCategory="100"
+            android:showAsAction="never"
+            android:title="@string/title_activity_twitter_auth"
+            android:icon="@drawable/twitter"/>
+    <item
+            android:id="@+id/action_logout"
+            android:orderInCategory="200"
+            android:showAsAction="never"
+            android:title=""
+            android:icon="@drawable/twitter"
+            />
+
+</menu>

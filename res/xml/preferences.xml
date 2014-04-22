@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:key="pref_syncGroup"
+            android:title="@string/pref_syncGroupTitle">
+        <EditTextPreference
+                android:key="pref_syncServer"
+                android:title="@string/pref_syncServerTitle"
+                android:summary="@string/pref_syncServerSummary"
+                android:defaultValue="http://www.donethat.de/index.php/api/"
+                />
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:key="pref_miscGroup"
+            android:title="@string/pref_miscGroupTitle">
+        <CheckBoxPreference
+                android:key="pref_memoryhack"
+                android:title="Memory Hack"
+                android:summary="Nur die 10 letzten Bilder werden in der Reiseübersicht angezeigt"
+                android:defaultValue="false"
+                />
+    </PreferenceCategory>
+</PreferenceScreen>

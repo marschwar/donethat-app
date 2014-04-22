@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/EditView"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".EditNoteActivity" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100" >
+
+        <EditText
+            android:id="@+id/trip_name"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="80"
+            android:hint="Name des Ortes oder Sehenswürdigkeit" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/trip_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:clickable="true"
+            android:gravity="right"
+            android:onClick="onDateFieldClicked" />
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bt_edit_date"
+                android:background="@drawable/ic_content_edit_dark"
+                android:layout_marginLeft="1dip"
+                android:onClick="onDateFieldClicked" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Beschreibung"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/trip_description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="Was ist passiert?"
+        android:inputType="textMultiLine"
+        android:gravity="top"/>
+
+</LinearLayout>
