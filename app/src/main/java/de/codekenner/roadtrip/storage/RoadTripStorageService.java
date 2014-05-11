@@ -142,7 +142,7 @@ public class RoadTripStorageService {
      * @param context
      * @param trip
      * @return
-     * @throws DataAccessException
+     * @throws de.codekenner.roadtrip.storage.DataAccessException
      */
     private Bitmap findAnyImage(Context context, final Trip trip)
             throws DataAccessException {

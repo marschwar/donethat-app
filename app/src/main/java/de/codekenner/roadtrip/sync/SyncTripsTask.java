@@ -114,7 +114,7 @@ public class SyncTripsTask extends AbstractSyncTask<SyncResult> {
      * @param dataSource
      * @param incomingTrip
      * @return true, wenn etwas geändert wurde, sonst false
-     * @throws JSONException
+     * @throws org.json.JSONException
      */
     private Trip syncTrip(TripDataSource dataSource, JSONObject incomingTrip) throws JSONException {
         final String uid = incomingTrip.getString("uid");

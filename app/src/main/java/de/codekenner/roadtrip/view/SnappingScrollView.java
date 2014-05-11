@@ -31,7 +31,7 @@ public class SnappingScrollView extends HorizontalScrollView {
 
     private void init() {
 
-        setOnTouchListener(new View.OnTouchListener() {
+        setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 // If the user swipes
