@@ -1,0 +1,110 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <GridLayout
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:columnCount="1"
+            android:rowCount="2"
+            tools:context=".MainActivity"
+            android:useDefaultMargins="true">
+
+        <LinearLayout
+                android:id="@+id/hero_new_trip"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/HeroBox"
+                android:onClick="createTrip"
+                android:background="@android:color/holo_orange_light"
+                android:layout_column="0"
+                android:layout_row="0">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center">
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:background="@drawable/ic_content_new"/>
+
+                <TextView
+                        android:id="@+id/tx_trips_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hero_trips_title_no_trips"
+                        style="@style/HeroHeader"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="35sp"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/tx_trips_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hero_trips_description_no_trips"
+                    style="@style/HeroDescription"
+                    android:layout_gravity="left|center_vertical"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/hero_login"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/hero_new_trip"
+                android:layout_height="wrap_content"
+                style="@style/HeroBox"
+                android:onClick="onAuth"
+                android:background="@android:color/holo_blue_light"
+                android:layout_column="0"
+                android:layout_row="1">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center">
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:background="@drawable/twitter"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anmelden"
+                        style="@style/HeroHeader"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:id="@+id/tx_login_header"
+                        android:textSize="35sp"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    style="@style/HeroDescription"
+                    android:layout_gravity="left|center_vertical"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:id="@+id/tx_login_description"
+                    android:textSize="20sp"/>
+        </LinearLayout>
+
+    </GridLayout>
+</ScrollView>

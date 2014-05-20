@@ -2,69 +2,83 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.codekenner.roadtrip" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:name="de.codekenner.roadtrip.DoneThatApplication"
         android:allowBackup="true"
-        android:name="de.codekenner.roadtrip.Application"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
-            android:name="de.codekenner.roadtrip.TripNotesActivity"
+            android:name="de.codekenner.roadtrip.Activities.TripNotesActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" >
+        </activity>
+        <activity
+            android:name="de.codekenner.roadtrip.Activities.AllTripsActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="de.codekenner.roadtrip.Activities.WelcomeActivity"
+            android:label="@string/app_name"
+            android:noHistory="true" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.AllTripsActivity"
-            android:label="@string/app_name">
-        </activity>
-        <activity
-            android:name="de.codekenner.roadtrip.MainActivity"
-            android:label="@string/app_name">
-        </activity>
-        <activity
-            android:name="de.codekenner.roadtrip.NoteDetailActivity"
+            android:name="de.codekenner.roadtrip.Activities.NoteDetailActivity"
             android:label="@string/title_activity_note_detail"
-            android:parentActivityName="de.codekenner.roadtrip.TripNotesActivity">
+            android:parentActivityName="de.codekenner.roadtrip.Activities.TripNotesActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.codekenner.roadtrip.TripNotesActivity"/>
+                android:value="de.codekenner.roadtrip.TripNotesActivity" />
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.EditTripActivity"
-            android:label="@string/title_activity_edit_trip">
+            android:name="de.codekenner.roadtrip.Activities.EditTripActivity"
+            android:label="@string/title_activity_edit_trip" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.codekenner.roadtrip.TripsActivity" />
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.EditNoteActivity"
-            android:label="@string/title_activity_edit_note">
+            android:name="de.codekenner.roadtrip.Activities.EditNoteActivity"
+            android:label="@string/title_activity_edit_note" >
         </activity>
         <activity
-            android:name=".TwitterAuthActivity"
+            android:name="de.codekenner.roadtrip.Activities.TwitterAuthActivity"
             android:label="@string/title_activity_twitter_auth"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="app"
-                    android:host="twitter"/>
+                    android:host="twitter"
+                    android:scheme="app" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="Einstellungen"/>
+            android:name="de.codekenner.roadtrip.Activities.SettingsActivity"
+            android:label="Einstellungen" />
+        <activity
+            android:name="de.codekenner.roadtrip.Activities.TripsActivity"
+            android:label="@string/title_activity_trips" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

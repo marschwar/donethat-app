@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\Marvin\dev\donethat-app\CardsUILib\assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\Marvin\dev\donethat-app\CardsUILib\build-types\debug\assets" />
+    </dataSet>
+
+</merger>

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.codekenner.roadtrip.Activities.TripsActivity" >
+    <item android:id="@+id/action_add_trip"
+        android:title="@string/action_add_trip"
+        android:icon="@drawable/ic_action_user_add"
+        android:showAsAction="ifRoom" />
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+</menu>

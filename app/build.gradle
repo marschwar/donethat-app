@@ -23,4 +23,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/signpost-commonshttp4-1.2.1.2.jar')
     compile files('libs/signpost-core-1.2.1.2.jar')
+    compile files('libs/volley.jar')
+    compile files('libs/gson-2.2.4.jar')
+    compile project(':CardsUILib')
 }

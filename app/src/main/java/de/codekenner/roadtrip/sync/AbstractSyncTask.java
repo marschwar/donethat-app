@@ -1,13 +1,11 @@
 package de.codekenner.roadtrip.sync;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import de.codekenner.roadtrip.SettingsActivity;
+import de.codekenner.roadtrip.Activities.SettingsActivity;
 import de.codekenner.roadtrip.storage.DataAccessException;
 import de.codekenner.roadtrip.storage.LocalStorageService;
 import org.json.JSONArray;
