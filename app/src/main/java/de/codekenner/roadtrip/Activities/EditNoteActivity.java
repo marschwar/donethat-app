@@ -1,11 +1,9 @@
 package de.codekenner.roadtrip.Activities;
 
-import java.util.Calendar;
-
+import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
 import android.os.Bundle;
-import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,154 +11,121 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import de.codekenner.roadtrip.DoneThatApplication;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import de.codekenner.roadtrip.R;
 import de.codekenner.roadtrip.domain.Note;
 import de.codekenner.roadtrip.storage.DataAccessException;
 import de.codekenner.roadtrip.storage.RoadTripStorageService;
 
-public class EditNoteActivity extends AbstractTripActivity {
-
-    public static final String PARAM_TRIP_ID = "trip_id";
-    public static final String STATE_DATE = "date";
-    public static final String STATE_DESCRIPTION = "description";
-    public static final String STATE_TITLE = "title";
+public class EditNoteActivity extends Activity {
 
     private Note currentNote;
-
-    private Long currentTripId;
+    private Long tripID;
+    private Calendar selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        currentNote = loadNoteFromExtras();
+        // Load Trip
+        tripID = getIntent().getLongExtra("ID_TRIP", -1);
+        assert (tripID != -1);
 
-        final Bundle b = getIntent().getExtras();
-        if (b != null) {
-            currentTripId = b.getLong(PARAM_TRIP_ID);
-            if (currentTripId == null) {
-                throw new IllegalStateException(PARAM_TRIP_ID
-                        + " Parameter fehlt");
+        // Load Note
+        Long noteID = getIntent().getLongExtra("ID_NOTE", -1);
+        if (noteID != -1) {
+            currentNote = loadNoteFromID(noteID);
+        } else {
+            currentNote = new Note();
+            currentNote.setTripId(tripID);
+        }
+        assert (currentNote != null);
+
+        // Set Date in EditText
+        TextView dateView = (TextView) findViewById(R.id.editDate);
+        Calendar date = currentNote.getDate();
+        this.selectedDate = date;
+
+        final int year = date.get(Calendar.YEAR);
+        final int month = date.get(Calendar.MONTH);
+        final int day = date.get(Calendar.DAY_OF_MONTH);
+
+        setDate(year, month, day);
+
+        dateView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatePickerDialog mDatePicker = new DatePickerDialog(EditNoteActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        setDate(selectedyear, selectedmonth, selectedday);
+                    }
+                }, year, month, day);
+
+                mDatePicker.setTitle("Select date");
+                mDatePicker.show();
             }
-        } else {
-            throw new IllegalStateException(PARAM_TRIP_ID + " Parameter fehlt");
-        }
-        if (currentNote == null) {
-            currentNote = createNote();
-        } else {
-            setTitle(currentNote.getName());
-        }
-
-        updateViewFromModel();
-
+        });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(STATE_TITLE, getTitleField().getText().toString());
-        outState.putString(STATE_DESCRIPTION, getTextField().getText().toString());
-        outState.putString(STATE_DATE, getDateField().getText().toString());
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        if (savedInstanceState != null) {
-            getTitleField().setText(savedInstanceState.getString(STATE_TITLE));
-            getTextField().setText(savedInstanceState.getString(STATE_DESCRIPTION));
-            getDateField().setText(savedInstanceState.getString(STATE_DATE));
-        }
-    }
-
-    private void updateViewFromModel() {
-        getTitleField().setText(currentNote.getName());
-        getTextField().setText(currentNote.getText());
-        getDateField().setText(
-                DateFormat.getDateFormat(this).format(
-                        currentNote.getDate().getTime()));
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.edit_note, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.action_save:
-                doSave();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_save_node) {
+            saveNote();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
-    public void onDateFieldClicked(View view) {
-        final Calendar cal = currentNote.getDate();
-        final DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                new OnDateSetListener() {
+    private void setDate(int year, int month, int day) {
+        TextView dateView = (TextView) findViewById(R.id.editDate);
 
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-                        final Calendar date = currentNote.getDate();
-                        date.set(Calendar.YEAR, year);
-                        date.set(Calendar.MONTH, monthOfYear);
-                        date.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        getDateField().setText(
-                                DateFormat.getDateFormat(EditNoteActivity.this)
-                                        .format(date.getTime()));
-                    }
-                }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.getDatePicker().setCalendarViewShown(false);
-        datePickerDialog.show();
+        Calendar date = Calendar.getInstance();
+        date.set(year, month, day);
+
+        dateView.setText(date.getTime().toString());
+        this.selectedDate = date;
     }
 
-    private void doSave() {
+    protected Note loadNoteFromID(Long id) {
+        if (id != null && id > 0) {
+            try {
+                return RoadTripStorageService.instance().getNote(this, id);
+            } catch (DataAccessException e) {
+                Log.e("EditNoteActivity", e.getMessage());
+            }
+        }
+        return null;
+    }
+
+    private void saveNote() {
         final Note note = currentNote;
-        note.setName(getTitleField().getText().toString());
-        note.setText(getTextField().getText().toString());
+        note.setName(((EditText) findViewById(R.id.editTitle)).getText().toString());
+        note.setText(((EditText) findViewById(R.id.editDescription)).getText().toString());
+        note.setDate(this.selectedDate);
+        note.setChanged(System.currentTimeMillis());
 
         try {
-            currentNote = RoadTripStorageService.instance()
-                    .saveNote(this, note);
+            currentNote = RoadTripStorageService.instance().saveNote(this, note);
             finish();
         } catch (DataAccessException e) {
-            showMessage(
-                    "Leider ist ein Fehler aufgetreten.\n" + e.getMessage());
+            Log.e("EditNoteActivity", "Leider ist ein Fehler aufgetreten.\n" + e.getMessage());
         }
-    }
-
-    private Note createNote() {
-        final Note note = new Note(currentTripId);
-        note.setLocation(((DoneThatApplication) getApplication()).getLocationWrapper().getCurrentLocation());
-        return note;
-    }
-
-    private TextView getDateField() {
-        return (TextView) findViewById(R.id.trip_date);
-    }
-
-    private TextView getTitleField() {
-        return (EditText) findViewById(R.id.trip_name);
-    }
-
-    private TextView getTextField() {
-        return (EditText) findViewById(R.id.trip_description);
     }
 }

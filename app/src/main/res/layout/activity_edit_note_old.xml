@@ -17,10 +17,7 @@
         android:ems="10"
         android:id="@+id/editDate"
         android:hint="@string/edit_notes_date"
-        android:layout_gravity="center_horizontal"
-        android:focusable="false"
-        android:clickable="true"
-        style="@android:style/Widget.DeviceDefault.Light.Spinner" />
+        android:layout_gravity="center_horizontal" />
 
     <EditText
         android:layout_width="match_parent"

@@ -5,19 +5,17 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.TextView;
+
 import de.codekenner.roadtrip.R;
 
 public class TripsActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, TripsFragment.OnFragmentInteractionListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, TripsFragment.OnFragmentInteractionListener, NotesFragment.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -36,7 +34,7 @@ public class TripsActivity extends Activity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        mTitle = getString(R.string.title_my_trips);
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -129,4 +127,33 @@ public class TripsActivity extends Activity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+    public void showNotesForTrip(Long id) {
+
+        // Create Bundle to send data
+        Bundle bundle = new Bundle();
+        bundle.putLong("id", id);
+
+        // Create fragment and attach data
+        Fragment fragment = new NotesFragment();
+        fragment.setArguments(bundle);
+
+        // Switch to new Fragment
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .addToBackStack("base")
+                .commit();
+    }
+
+    public void addNoteForTrip(Long id) {
+        // Launch edit notes activity
+        Intent intent = new Intent(this, EditNoteActivity.class);
+        intent.putExtra("ID_TRIP", id);
+        this.startActivity(intent);
+    }
+
+    public void setActionBarTitle(String title) {
+        getActionBar().setTitle(title);
+    }
+
 }

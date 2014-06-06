@@ -286,7 +286,7 @@ public class NoteDetailActivity extends AbstractTripActivity implements Location
     }
 
     private void doEdit() {
-        final Intent intent = new Intent(this, EditNoteActivity.class);
+        final Intent intent = new Intent(this, EditNoteActivity_old.class);
         intent.putExtra(PARAM_ID, currentNote.getId());
         startActivity(intent);
     }

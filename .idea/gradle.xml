@@ -7,9 +7,9 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\Users\Marvin\dev\donethat-app" />
-            <option value="C:\Users\Marvin\dev\donethat-app\CardsUILib" />
-            <option value="C:\Users\Marvin\dev\donethat-app\app" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/CardsUILib" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
       </GradleProjectSettings>

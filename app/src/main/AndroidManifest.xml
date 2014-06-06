@@ -9,22 +9,22 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name="de.codekenner.roadtrip.DoneThatApplication"
+        android:name=".DoneThatApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="de.codekenner.roadtrip.Activities.TripNotesActivity"
+            android:name=".Activities.TripNotesActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop" >
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.Activities.AllTripsActivity"
+            android:name=".Activities.AllTripsActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.Activities.WelcomeActivity"
+            android:name=".Activities.WelcomeActivity"
             android:label="@string/app_name"
             android:noHistory="true" >
             <intent-filter>
@@ -34,26 +34,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.Activities.NoteDetailActivity"
+            android:name=".Activities.NoteDetailActivity"
             android:label="@string/title_activity_note_detail"
-            android:parentActivityName="de.codekenner.roadtrip.Activities.TripNotesActivity" >
+            android:parentActivityName=".Activities.TripNotesActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.codekenner.roadtrip.TripNotesActivity" />
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.Activities.EditTripActivity"
+            android:name=".Activities.EditTripActivity"
             android:label="@string/title_activity_edit_trip" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.codekenner.roadtrip.TripsActivity" />
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.Activities.EditNoteActivity"
+            android:name=".Activities.EditNoteActivity_old"
             android:label="@string/title_activity_edit_note" >
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.Activities.TwitterAuthActivity"
+            android:name=".Activities.TwitterAuthActivity"
             android:label="@string/title_activity_twitter_auth"
             android:launchMode="singleInstance" >
             <intent-filter>
@@ -68,16 +68,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.codekenner.roadtrip.Activities.SettingsActivity"
+            android:name=".Activities.SettingsActivity"
             android:label="Einstellungen" />
         <activity
-            android:name="de.codekenner.roadtrip.Activities.TripsActivity"
+            android:name=".Activities.TripsActivity"
             android:label="@string/title_activity_trips" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.EditNoteActivity"
+            android:label="@string/title_activity_edit_note" >
         </activity>
     </application>
 

@@ -1,6 +1,5 @@
 package de.codekenner.roadtrip.Activities;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,6 +46,9 @@ public class TripNotesActivity extends AbstractTripActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        int tripID = intent.getIntExtra("id", -1);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_notes);
 
@@ -57,13 +58,21 @@ public class TripNotesActivity extends AbstractTripActivity {
         final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         imageMemoryHack = sharedPref.getBoolean("pref_memoryhack", false);
 
+        for (Trip trip : allTrips) {
+            if (trip.getId() == Long.valueOf(tripID)) {
+                currentTrip = trip;
+            }
+        }
+
+        /*
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         final ArrayAdapter<Trip> spinnerAdapter = new ArrayAdapter<Trip>(this, R.layout.spinner_dropdown_item);
         spinnerAdapter.addAll(allTrips);
+        */
 
-
+        /*
         actionBar.setListNavigationCallbacks(spinnerAdapter, new ActionBar.OnNavigationListener() {
             @Override
             public boolean onNavigationItemSelected(int itemPosition, long itemId) {
@@ -76,7 +85,9 @@ public class TripNotesActivity extends AbstractTripActivity {
                 return false;
             }
         });
+        */
 
+        /*
         currentTrip = loadTripFromParameters();
         if (currentTrip == null) {
             currentTrip = allTrips.get(0);
@@ -88,6 +99,7 @@ public class TripNotesActivity extends AbstractTripActivity {
                 }
             }
         }
+        */
         setTitle(null);
     }
 
@@ -143,8 +155,8 @@ public class TripNotesActivity extends AbstractTripActivity {
     }
 
     private void doNewNote() {
-        final Intent intent = new Intent(this, EditNoteActivity.class);
-        intent.putExtra(EditNoteActivity.PARAM_TRIP_ID, currentTrip.getId());
+        final Intent intent = new Intent(this, EditNoteActivity_old.class);
+        intent.putExtra(EditNoteActivity_old.PARAM_TRIP_ID, currentTrip.getId());
         startActivity(intent);
     }
 

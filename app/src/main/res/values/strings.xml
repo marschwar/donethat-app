@@ -28,15 +28,17 @@
     <string name="title_browse">Browse</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    // ACTIONS
-    <string name="action_add_trip">Create New Trip</string>
-
-    // CARDS
-    <string name="card_trip_title">Trip Title</string>
+    // ACTIONS    <string name="action_add_trip">Create New Trip</string>
+    // CARDS    <string name="card_trip_title">Trip Title</string>
     <string name="card_trip_subtitle">This is a trip subtitle</string>
+    // Notes Fragment    <string name="notes_trip_empty">There are no notes available</string>
+    <string name="notes_trip_empty_description">Do you have something to say about this trip? Click this card to add a new Note!</string>
+    // Edit Notes    <string name="edit_notes_date">Date</string>
+    <string name="edit_notes_title">Title</string>
+    <string name="edit_notes_description">Description</string>
+    <string name="action_save_note">Save</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
