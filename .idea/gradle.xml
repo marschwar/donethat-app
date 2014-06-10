@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/CardsUILib" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/datetimepicker" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -15,7 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import de.codekenner.roadtrip.DoneThatApplication;
 import de.codekenner.roadtrip.R;
+import de.codekenner.roadtrip.domain.Location;
 import de.codekenner.roadtrip.domain.Note;
 import de.codekenner.roadtrip.storage.DataAccessException;
 import de.codekenner.roadtrip.storage.RoadTripStorageService;
@@ -40,8 +42,7 @@ public class EditNoteActivity extends Activity {
         if (noteID != -1) {
             currentNote = loadNoteFromID(noteID);
         } else {
-            currentNote = new Note();
-            currentNote.setTripId(tripID);
+            currentNote = createNewNoteForTrip(tripID);
         }
         assert (currentNote != null);
 
@@ -70,6 +71,16 @@ public class EditNoteActivity extends Activity {
                 mDatePicker.show();
             }
         });
+    }
+
+    private Note createNewNoteForTrip(Long id) {
+        Note newNote = new Note();
+        newNote.setTripId(id);
+
+        // Enable GPS
+        ((DoneThatApplication) getApplication()).getLocationWrapper().startSearchingForLocation();
+
+        return newNote;
     }
 
 
@@ -119,6 +130,7 @@ public class EditNoteActivity extends Activity {
         note.setName(((EditText) findViewById(R.id.editTitle)).getText().toString());
         note.setText(((EditText) findViewById(R.id.editDescription)).getText().toString());
         note.setDate(this.selectedDate);
+        note.setLocation(((DoneThatApplication) getApplication()).getLocationWrapper().getLocationAndStopListening());
 
         try {
             currentNote = RoadTripStorageService.instance().saveNote(this, note);

@@ -21,10 +21,12 @@ public class LocationWrapper {
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
         initializeLocation();
-        checkForLocationUpdates();
+        //checkForLocationUpdates();
     }
 
-    public void checkForLocationUpdates() {
+
+
+    public void startSearchingForLocation() {
         locationListener = new MyLocationListener();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
                 0, locationListener
@@ -46,6 +48,13 @@ public class LocationWrapper {
 
     public de.codekenner.roadtrip.domain.Location getCurrentLocation() {
         return currentLocation;
+    }
+
+    public de.codekenner.roadtrip.domain.Location getLocationAndStopListening() {
+
+        locationManager.removeUpdates(locationListener);
+        
+        return getCurrentLocation();
     }
 
     public void setCurrentLocation(
