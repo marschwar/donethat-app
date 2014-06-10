@@ -119,7 +119,6 @@ public class EditNoteActivity extends Activity {
         note.setName(((EditText) findViewById(R.id.editTitle)).getText().toString());
         note.setText(((EditText) findViewById(R.id.editDescription)).getText().toString());
         note.setDate(this.selectedDate);
-        note.setChanged(System.currentTimeMillis());
 
         try {
             currentNote = RoadTripStorageService.instance().saveNote(this, note);

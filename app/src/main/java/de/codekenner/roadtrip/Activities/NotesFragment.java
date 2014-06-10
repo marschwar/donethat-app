@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import com.fima.cardsui.objects.Card;
 import com.fima.cardsui.views.CardUI;
 
+import java.util.List;
+
 import de.codekenner.roadtrip.Cards.ImageCard;
 import de.codekenner.roadtrip.R;
 import de.codekenner.roadtrip.domain.Note;
@@ -85,6 +87,8 @@ public class NotesFragment extends Fragment {
         } catch (DataAccessException e) {
             Log.e("NotesFragment", e.getMessage());
         }
+
+        loadNotes();
 
         ((TripsActivity) getActivity()).setActionBarTitle(this.trip.getName());
 
@@ -164,4 +168,13 @@ public class NotesFragment extends Fragment {
         public void onFragmentInteraction(Uri uri);
     }
 
+    private void loadNotes() {
+        try {
+            List notes = RoadTripStorageService.instance().getNotes(getActivity(), trip);
+
+            this.trip.setNotes(notes);
+        } catch (DataAccessException e) {
+            Log.e("NotesFragment", e.getMessage());
+        }
+    }
 }
