@@ -148,7 +148,7 @@ public class EditNoteActivity_old extends AbstractTripActivity {
 
     private Note createNote() {
         final Note note = new Note(currentTripId);
-        note.setLocation(((DoneThatApplication) getApplication()).getLocationWrapper().getCurrentLocation());
+        //note.setLocation(((DoneThatApplication) getApplication()).getLocationWrapper().getCurrentLocation());
         return note;
     }
 

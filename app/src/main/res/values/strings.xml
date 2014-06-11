@@ -36,9 +36,11 @@
     // Notes Fragment    <string name="notes_trip_empty">There are no notes available</string>
     <string name="notes_trip_empty_description">Do you have something to say about this trip? Click this card to add a new Note!</string>
     // Edit Notes    <string name="edit_notes_date">Date</string>
+    <string name="edit_notes_location">Location</string>
+    <string name="edit_notes_location_name">Location Name</string>
+    <string name="edit_notes_location_switch">Automatic Coordinates</string>
     <string name="edit_notes_title">Title</string>
     <string name="edit_notes_description">Description</string>
     <string name="action_save_note">Save</string>
-    <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -51,9 +51,9 @@ public class LocationWrapper {
     }
 
     public de.codekenner.roadtrip.domain.Location getLocationAndStopListening() {
-
+        // Stop the LocationManager from polling the GPS
         locationManager.removeUpdates(locationListener);
-        
+
         return getCurrentLocation();
     }
 

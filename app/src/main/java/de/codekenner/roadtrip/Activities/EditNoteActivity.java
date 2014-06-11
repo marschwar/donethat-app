@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -71,14 +73,40 @@ public class EditNoteActivity extends Activity {
                 mDatePicker.show();
             }
         });
+
+        // Set-Up Switch mechanics
+        Switch locationSwitch = (Switch) findViewById(R.id.switchLocation);
+        locationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
+                EditText editLocation = (EditText) findViewById(R.id.editLocation);
+
+                if (isChecked) {
+                    editLocation.setVisibility(View.INVISIBLE);
+
+                    // Enable GPS
+                    ((DoneThatApplication) getApplication()).startSearchingForLocation();
+                } else {
+
+                    editLocation.setVisibility(View.VISIBLE);
+                    editLocation.setText(((DoneThatApplication) getApplication()).getLocationAndStopListening().toString());
+                }
+            }
+        });
+
+
+        // Set-Up manual Location picker
+        // TODO
+
+
+        // Enable GPS
+        ((DoneThatApplication) getApplication()).startSearchingForLocation();
     }
 
     private Note createNewNoteForTrip(Long id) {
         Note newNote = new Note();
         newNote.setTripId(id);
-
-        // Enable GPS
-        ((DoneThatApplication) getApplication()).getLocationWrapper().startSearchingForLocation();
 
         return newNote;
     }
@@ -130,7 +158,8 @@ public class EditNoteActivity extends Activity {
         note.setName(((EditText) findViewById(R.id.editTitle)).getText().toString());
         note.setText(((EditText) findViewById(R.id.editDescription)).getText().toString());
         note.setDate(this.selectedDate);
-        note.setLocation(((DoneThatApplication) getApplication()).getLocationWrapper().getLocationAndStopListening());
+
+        note.setLocation(((DoneThatApplication) getApplication()).getLocationAndStopListening());
 
         try {
             currentNote = RoadTripStorageService.instance().saveNote(this, note);

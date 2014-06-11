@@ -33,7 +33,11 @@ public class DoneThatApplication extends android.app.Application {
         requestQueue = Volley.newRequestQueue(getApplicationContext());
     }
 
-    public LocationWrapper getLocationWrapper() {
-        return locationWrapper;
+    public void startSearchingForLocation() {
+        locationWrapper.startSearchingForLocation();
+    }
+
+    public de.codekenner.roadtrip.domain.Location getLocationAndStopListening() {
+        return locationWrapper.getLocationAndStopListening();
     }
 }

@@ -3,12 +3,12 @@
     style="@style/EditView"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".EditNoteActivity" >
+    tools:context=".EditNoteActivity"
+    android:orientation="vertical">
 
     <EditText
         android:layout_width="match_parent"
@@ -20,7 +20,8 @@
         android:layout_gravity="center_horizontal"
         android:focusable="false"
         android:clickable="true"
-        style="@android:style/Widget.DeviceDefault.Light.Spinner" />
+        style="@android:style/Widget.DeviceDefault.Light.Spinner"
+        android:enabled="false" />
 
     <EditText
         android:layout_width="match_parent"
@@ -35,5 +36,29 @@
         android:id="@+id/editDescription"
         android:layout_gravity="center_horizontal"
         android:hint="@string/edit_notes_description" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_notes_location_switch"
+        android:id="@+id/switchLocation"
+        android:checked="true"
+        android:layout_gravity="right"
+        android:enabled="true"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        style="@android:style/Widget.DeviceDefault.Light.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editLocation"
+        android:hint="@string/edit_notes_location"
+        android:layout_gravity="center_horizontal"
+        android:focusable="false"
+        android:clickable="true"
+        android:enabled="false"
+        android:visibility="invisible" />
 
 </LinearLayout>
